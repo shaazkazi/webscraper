@@ -436,21 +436,127 @@ textarea {
 [data-type="css"] + .copy-links-btn { color: #06b6d4; }
 [data-type="js"] + .copy-links-btn { color: #0f0bf5; }
 [data-type="media"] + .copy-links-btn { color: #10b981; }
-.input-group button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
+@media (max-width: 768px) {
+    .input-group {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        gap: 8px;
+        padding: 12px;
+    }
 
-.input-group button:not(:last-child) {
-    background: var(--card);
-    color: var(--primary);
-    border: 1px solid rgba(99, 102, 241, 0.2);
-    padding: 0 15px;
-}
+    .input-group input {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
 
-.input-group button:not(:last-child):hover {
-    background: rgba(99, 102, 241, 0.1);
-    transform: translateY(0);
+    .input-group button {
+        padding: 12px;
+        min-width: 44px;
+        height: 44px;
+    }
+
+    .input-group button:not(:last-child) {
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .input-group button:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .input-group button svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+@media (max-width: 768px) {
+    .input-group {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .input-group input {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .input-group button {
+        padding: 12px;
+        min-width: 44px;
+        height: 44px;
+    }
+
+    .input-group button:not(:last-child) {
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .input-group button:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .input-group button svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+@media (max-width: 768px) {
+    .input-group {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .input-group input {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .input-group button {
+        height: 44px;
+    }
+
+    /* Create a button container for single row */
+    .input-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Button row styling */
+    .input-group .button-row {
+        display: flex;
+        gap: 8px;
+    }
+
+    .input-group button:not(:last-child) {
+        width: 20%;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .input-group button:last-child {
+        width: 60%;
+    }
+
+    .input-group button svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+@media (max-width: 768px) {
+    input {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+        width: calc(100% - 2rem);
+        box-sizing: border-box;
+    }
 }
