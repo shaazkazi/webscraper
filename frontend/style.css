@@ -295,16 +295,29 @@ textarea {
     gap: 12px;
 }
 
+.source-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.source-header h3 {
+    margin: 0;
+}
+
 .copy-btn {
     background: none;
     border: none;
-    padding: 6px;
+    padding: 8px;
     cursor: pointer;
     color: var(--primary);
-    border-radius: 6px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     transition: all 0.3s ease;
+    margin-left: auto;
 }
 
 .copy-btn:hover {
@@ -312,6 +325,26 @@ textarea {
     transform: translateY(0);
     box-shadow: none;
 }
+
 .copy-btn:active {
     transform: translateY(2px);
+}
+
+.code-container {
+    width: calc(100% - 3rem);
+    max-width: 100%;
+    margin: 0 auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+@media (max-width: 768px) {
+    .source-header {
+        padding: 0 1rem;
+    }
+    
+    .code-container {
+        width: calc(100% - 2rem);
+        font-size: 14px;
+    }
 }
