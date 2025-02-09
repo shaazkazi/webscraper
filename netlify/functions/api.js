@@ -19,11 +19,22 @@ router.get('/scrape', async (req, res) => {
         const $ = cheerio.load(html);
 
         const baseUrl = new URL(url).origin;
-
-        const formatLink = (link) => {
-            if (!link) return null;
-            return link.startsWith('http') ? link : `${baseUrl}/${link.replace(/^\/+/, '')}`;
-        };
+            const formatLink = (link) => {
+                if (!link) return null;
+            
+                // Handle protocol-relative URLs (starting with //)
+                if (link.startsWith('//')) {
+                    return `https:${link}`;
+                }
+            
+                // Handle absolute URLs
+                if (link.startsWith('http')) {
+                    return link;
+                }
+            
+                // Handle relative URLs
+                return `${baseUrl}/${link.replace(/^\/+/, '')}`;
+            };
 
         const cssLinks = [];
         const jsLinks = [];
