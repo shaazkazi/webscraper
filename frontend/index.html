@@ -62,19 +62,24 @@
     </div>
     <script>
         async function scrapeWebsite() {
-            const url = document.getElementById('urlInput').value;
-            if (!url) { alert('Please enter a valid URL'); return; }
-            
-            const response = await fetch(`/.netlify/functions/api/scrape?url=${encodeURIComponent(url)}`);
-            const data = await response.json();
-            
-            document.getElementById('htmlSource').textContent = data.html;
-            Prism.highlightElement(document.getElementById('htmlSource'));
-            
-            document.getElementById('cssLinks').innerHTML = data.css.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('');
-            document.getElementById('jsLinks').innerHTML = data.js.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('');
-            document.getElementById('assetLinks').innerHTML = data.assets.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('');
-        }
+    let url = document.getElementById('urlInput').value.trim();
+    if (!url) { alert('Please enter a valid URL'); return; }
+    
+    // Add protocol if missing
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'https://' + url;
+    }
+    
+    const response = await fetch(`/.netlify/functions/api/scrape?url=${encodeURIComponent(url)}`);
+    const data = await response.json();
+    
+    document.getElementById('htmlSource').textContent = data.html;
+    Prism.highlightElement(document.getElementById('htmlSource'));
+    
+    document.getElementById('cssLinks').innerHTML = data.css.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('');
+    document.getElementById('jsLinks').innerHTML = data.js.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('');
+    document.getElementById('assetLinks').innerHTML = data.assets.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('');
+}
 
         function copySourceCode() {
             const sourceCode = document.getElementById('htmlSource').textContent;
