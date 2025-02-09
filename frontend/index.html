@@ -26,18 +26,17 @@
     </div>
     <script>
         async function scrapeWebsite() {
-            const url = document.getElementById('urlInput').value;
-            if (!url) { alert('Please enter a valid URL'); return; }
-            
-            const response = await fetch(`/api/scrape?url=${encodeURIComponent(url)}`);
-            const data = await response.json();
-            
-            document.getElementById('htmlSource').value = data.html;
-            
-            document.getElementById('cssLinks').innerHTML = data.css.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('');
-            document.getElementById('jsLinks').innerHTML = data.js.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('');
-            document.getElementById('assetLinks').innerHTML = data.assets.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('');
-        }
+    const url = document.getElementById('urlInput').value;
+    if (!url) { alert('Please enter a valid URL'); return; }
+    
+    const response = await fetch(`/.netlify/functions/api/scrape?url=${encodeURIComponent(url)}`);
+    const data = await response.json();
+    
+    document.getElementById('htmlSource').value = data.html;
+    document.getElementById('cssLinks').innerHTML = data.css.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('');
+    document.getElementById('jsLinks').innerHTML = data.js.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('');
+    document.getElementById('assetLinks').innerHTML = data.assets.map(link => `<li><a href="${link}" target="_blank">${link}</a></li>`).join('');
+}
     </script>
 </body>
 </html>
