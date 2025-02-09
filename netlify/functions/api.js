@@ -5,9 +5,11 @@ const cheerio = require('cheerio');
 const cors = require('cors');
 
 const app = express();
+const router = express.Router();
 app.use(cors());
 
-app.get('/scrape', async (req, res) => {
+// Change the route to root path
+router.get('/scrape', async (req, res) => {
     try {
         const { url } = req.query;
         if (!url) return res.status(400).json({ error: 'URL is required' });
@@ -16,7 +18,7 @@ app.get('/scrape', async (req, res) => {
         const html = response.data;
         const $ = cheerio.load(html);
 
-        const baseUrl = new URL(url).origin; // Extract base domain
+        const baseUrl = new URL(url).origin;
 
         const formatLink = (link) => {
             if (!link) return null;
@@ -50,5 +52,7 @@ app.get('/scrape', async (req, res) => {
         res.status(500).json({ error: 'Failed to scrape the website' });
     }
 });
+
+app.use('/.netlify/functions/api', router);
 
 module.exports.handler = serverless(app);
