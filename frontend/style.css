@@ -386,14 +386,20 @@ textarea {
 .copy-btn:active {
     transform: translateY(2px);
 }
-.links h3[data-type="css"] {
-    color: #06b6d4;  /* Cyan */
+/* CSS Resources styling */
+.links h3[data-type="css"], 
+.links ul[data-type="css"] a {
+    color: #06b6d4;
 }
 
-.links h3[data-type="js"] {
-    color: #0f0bf5;  /* Amber */
+/* JavaScript Resources styling */
+.links h3[data-type="js"],
+.links ul[data-type="js"] a {
+    color: #0f0bf5;
 }
 
-.links h3[data-type="media"] {
-    color: #10b981;  /* Emerald */
+/* Media Assets styling */
+.links h3[data-type="media"],
+.links ul[data-type="media"] a {
+    color: #10b981;
 }
