@@ -253,3 +253,65 @@ textarea {
         margin-bottom: 1.5rem;
     }
 }
+.code-container {
+    width: 100%;
+    max-height: 500px;
+    padding: 1.5rem;
+    border-radius: 16px;
+    background: #2d2d2d !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    overflow: auto;
+    margin: 1rem 0;
+}
+
+.code-container code {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Custom scrollbar for code container */
+.code-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.code-container::-webkit-scrollbar-track {
+    background: #1e1e1e;
+    border-radius: 4px;
+}
+
+.code-container::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 4px;
+}
+
+.code-container::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+.source-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    color: var(--primary);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: rgba(99, 102, 241, 0.1);
+    transform: translateY(0);
+    box-shadow: none;
+}
+.copy-btn:active {
+    transform: translateY(2px);
+}
