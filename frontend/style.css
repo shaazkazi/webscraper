@@ -386,3 +386,14 @@ textarea {
 .copy-btn:active {
     transform: translateY(2px);
 }
+.links h3[data-type="css"] {
+    color: #06b6d4;  /* Cyan */
+}
+
+.links h3[data-type="js"] {
+    color: #f59e0b;  /* Amber */
+}
+
+.links h3[data-type="media"] {
+    color: #10b981;  /* Emerald */
+}
