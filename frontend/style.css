@@ -403,3 +403,36 @@ textarea {
 .links ul[data-type="media"] a {
     color: #10b981;
 }
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.copy-links-btn {
+    background: none;
+    border: none;
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.copy-links-btn:hover {
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.copy-links-btn:active {
+    transform: translateY(1px);
+}
+
+/* Inherit section colors for copy buttons */
+[data-type="css"] + .copy-links-btn { color: #06b6d4; }
+[data-type="js"] + .copy-links-btn { color: #0f0bf5; }
+[data-type="media"] + .copy-links-btn { color: #10b981; }
